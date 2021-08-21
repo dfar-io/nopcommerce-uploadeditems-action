@@ -1,0 +1,9 @@
+name: 'Create uploadedItems.json'
+description: 'Creates an uploadedItems.json file based on the nopCommerce plugin source provided.'
+inputs:
+  plugin-name:
+    description: 'Name of the plugin to create'
+    required: true
+runs:
+  using: 'node12'
+  main: 'index.js'
