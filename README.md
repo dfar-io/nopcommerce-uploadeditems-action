@@ -11,7 +11,7 @@ This action creates an `uploadedItems.json` file based on the source code provid
 ## Example usage
 
 ```
-uses: actions/nopcommerce-uploadeditems-action@v0.1
+uses: dfar-io/nopcommerce-uploadeditems-action@v0.1
 with:
   plugin-name: 'Nop.Plugin.Widgets.Bronto'
 ```
