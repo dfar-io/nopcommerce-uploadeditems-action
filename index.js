@@ -19,6 +19,7 @@ try {
       if (pluginJsonContents.length <= 0) {
         throw new Error("plugin.json has no content");
       }
+      console.log(pluginJsonContents);
       
       const uploadedItemsEntry = {
         Type: "Plugin",
@@ -27,6 +28,8 @@ try {
         SystemName: pluginJsonContents.SystemName,
         SourceDirectoryPath: `${file}/Nop.Plugin.${pluginJsonContents.SystemName}/`
       }
+      
+      console.log(uploadedItemsEntry);
 
       entries.push(uploadedItemsEntry);
       
