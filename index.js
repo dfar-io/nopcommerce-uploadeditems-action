@@ -17,6 +17,7 @@ try {
         throw new Error("plugin.json not found at ${jsonFile}");
       }
       const data = fs.readFileSync(jsonFile, 'utf8');
+      console.log(`data: ${data}`);
       const pluginJsonContents = JSON.parse(data);
       if (pluginJsonContents.length <= 0) {
         console.log(`error thrown - no content`);
