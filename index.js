@@ -10,14 +10,16 @@ try {
     const isDirectory = fs.lstatSync(file).isDirectory() && !file.includes('.git')
 
     if (isDirectory) {
-      console.log(`processing directory: ${file}`);
       const jsonFile = `${file}/${pluginName}/plugin.json`;
       if(!fs.existsSync(jsonFile)) {
         throw new Error("plugin.json not found at ${jsonFile}");
       }
       const data = fs.readFileSync(jsonFile, 'utf8');
-
       const pluginJsonContents = JSON.parse(data);
+      if (pluginJsonContents.length <= 0) {
+        throw new Error("plugin.json has no content");
+      }
+      
       const uploadedItemsEntry = {
         Type: "Plugin",
         SupportedVersion: pluginJsonContents.SupportedVersions[0],
@@ -27,6 +29,8 @@ try {
       }
 
       entries.push(uploadedItemsEntry);
+      
+      console.log(entries);
     }
   });
   
