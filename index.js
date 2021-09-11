@@ -13,11 +13,13 @@ try {
       console.log(`processing dir: ${file}`);
       const jsonFile = `${file}/${pluginName}/plugin.json`;
       if(!fs.existsSync(jsonFile)) {
+        console.log(`error thrown - file not found`);
         throw new Error("plugin.json not found at ${jsonFile}");
       }
       const data = fs.readFileSync(jsonFile, 'utf8');
       const pluginJsonContents = JSON.parse(data);
       if (pluginJsonContents.length <= 0) {
+        console.log(`error thrown - no content`);
         throw new Error("plugin.json has no content");
       }
       console.log(pluginJsonContents);
