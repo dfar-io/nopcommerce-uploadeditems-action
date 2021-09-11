@@ -10,7 +10,11 @@ try {
     const isDirectory = fs.lstatSync(file).isDirectory() && !file.includes('.git')
 
     if (isDirectory) {
-      const data = fs.readFileSync(`${file}/${pluginName}/plugin.json`, 'utf8');
+      const jsonFile = `${file}/${pluginName}/plugin.json`;
+      if(!fs.existsSync(jsonFile)) {
+        throw new Error("plugin.json not found at ${jsonFile}");
+      }
+      const data = fs.readFileSync(jsonFile, 'utf8');
 
       const pluginJsonContents = JSON.parse(data);
       const uploadedItemsEntry = {
