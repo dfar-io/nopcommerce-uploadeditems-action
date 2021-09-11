@@ -10,6 +10,7 @@ try {
     const isDirectory = fs.lstatSync(file).isDirectory() && !file.includes('.git')
 
     if (isDirectory) {
+      console.log(`processing dir: ${file}`);
       const jsonFile = `${file}/${pluginName}/plugin.json`;
       if(!fs.existsSync(jsonFile)) {
         throw new Error("plugin.json not found at ${jsonFile}");
