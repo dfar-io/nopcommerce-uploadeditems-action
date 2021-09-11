@@ -10,20 +10,10 @@ try {
     const isDirectory = fs.lstatSync(file).isDirectory() && !file.includes('.git')
 
     if (isDirectory) {
-      console.log(`processing dir: ${file}`);
+      console.log(`processing version: ${file}`);
       const jsonFile = `${file}/${pluginName}/plugin.json`;
-      if(!fs.existsSync(jsonFile)) {
-        console.log(`error thrown - file not found`);
-        throw new Error("plugin.json not found at ${jsonFile}");
-      }
       const data = fs.readFileSync(jsonFile, 'utf8');
-      console.log(`data: ${data}`);
       const pluginJsonContents = JSON.parse(data);
-      if (pluginJsonContents.length <= 0) {
-        console.log(`error thrown - no content`);
-        throw new Error("plugin.json has no content");
-      }
-      console.log(pluginJsonContents);
       
       const uploadedItemsEntry = {
         Type: "Plugin",
@@ -32,12 +22,8 @@ try {
         SystemName: pluginJsonContents.SystemName,
         SourceDirectoryPath: `${file}/Nop.Plugin.${pluginJsonContents.SystemName}/`
       }
-      
-      console.log(uploadedItemsEntry);
 
       entries.push(uploadedItemsEntry);
-      
-      console.log(entries);
     }
   });
   
