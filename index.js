@@ -20,7 +20,7 @@ try {
         SupportedVersion: pluginJsonContents.SupportedVersions[0],
         DirectoryPath: `${file}/${pluginJsonContents.SystemName}/`,
         SystemName: pluginJsonContents.SystemName,
-        SourceDirectoryPath: `${file}/Nop.Plugin.${pluginJsonContents.SystemName}/`
+        SourceDirectoryPath: `${file}/DFar.Plugin.${pluginJsonContents.SystemName}/`
       }
 
       entries.push(uploadedItemsEntry);
